@@ -17,11 +17,14 @@ class NewMessage extends Component
 
     public function sendMessage(){
         $this->validate();
-        Message::create([
+
+        $message = Message::create([
             'message' => $this->message,
             'room_id' => $this->room->id,
             'user_id' => auth()->user()->id
         ]);
+
+        $this->emit('message.added', $message->id);
         $this->message = '';
     }
 
