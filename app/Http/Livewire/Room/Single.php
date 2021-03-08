@@ -1,0 +1,20 @@
+<?php
+
+namespace App\Http\Livewire\Room;
+
+use App\Models\Message;
+use App\Models\Room;
+use Livewire\Component;
+
+class Single extends Component
+{
+    public Room $room;
+
+    public function render()
+    {
+        $messages = $this->room->messages()->with('user')->latest()->get();
+        return view('livewire.room.single', [
+            'messages' => $messages
+        ]);
+    }
+}

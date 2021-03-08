@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Livewire\Room\Index as RoomIndex;
+use App\Http\Livewire\Room\Single as RoomSingle;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,4 +28,5 @@ require __DIR__.'/auth.php';
 
 Route::middleware('auth')->group(function (){
     Route::get('rooms', RoomIndex::class);
+    Route::get('rooms/{room:slug}', RoomSingle::class)->name('rooms.single');
 });
