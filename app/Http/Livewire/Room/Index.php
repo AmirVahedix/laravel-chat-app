@@ -9,6 +9,10 @@ class Index extends Component
 {
     public $rooms;
 
+    protected $listeners = [
+        'room.added' => '$refresh'
+    ];
+
     public function render()
     {
         $this->rooms = Room::latest()->get();
